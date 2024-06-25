@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valery :3</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap">
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        /* Ajustes visuales adicionales */
+        .text strong {
+            font-family: 'Arial', sans-serif; /* Cambia el tipo de fuente del nombre */
+            font-size: 14px; /* Tamaño de fuente del nombre */
+            color: #0a0909; /* Color del nombre */
+            margin-bottom: 12px; /* Espacio entre el nombre y el texto */
+        }
+
+        .text p {
+            font-family: 'Calibri'; /* Cambia el tipo de fuente del texto */
+            font-size: 10px; /* Tamaño de fuente del texto */
+            color: #000000; /* Color del texto */
+            margin: 0; /* Elimina el margen del párrafo */
+        }
+
+        .container {
+        display: flex; /* Usar flexbox */
+        overflow-x: auto; /* Ocultar la barra de desplazamiento horizontal */
+        max-width: 100%; /* Ajustar el ancho máximo para asegurarse de que todos los sobres se muestren completamente */
+        }
+
+        .envelope-wrapper {
+        width: 300px; /* Ancho fijo de cada sobre */
+        height: 230px; /* Altura fija de cada sobre */
+        margin-right: auto; /* Espacio entre los sobres ajustado automáticamente */
+        position: relative; /* Permite posicionar el corazón de forma absoluta */
+        animation: swing 2s infinite; /* Animación de oscilación */
+        cursor: pointer;
+        }
+
+        .envelope-wrapper img {
+           user-select: none; /* Desactiva la selección de texto en las imágenes */
+            -moz-user-select: none; /* Firefox */
+            -webkit-user-select: none; /* Chrome, Safari, Opera */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+        }
+
+        .title {
+        font-family: 'Arial'; /* Cambia el tipo de fuente */
+        font-size: 75px; /* Ajusta el tamaño de la fuente según sea necesario */
+        color: #271d2c; /* Cambia el color del texto */
+        text-align: center; /* Centra el texto */
+        margin-bottom: 50px; /* Añade un espacio entre el título y los sobres */
+        }
+        
+
+
+        /* Animación de oscilación */
+        @keyframes swing {
+            0% {
+                transform: translateY(-5px);
+            }
+            50% {
+                transform: translateY(5px);
+            }
+            100% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .heart {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 15px;
+            height: 15px;
+            background: var(--heart-color);
+            z-index: 4;
+            transition: transform 0.5s ease-in-out 1s;
+            box-shadow: 0 1px 6px var(--shadow-color);
+            cursor: pointer;
+        }
+
+        .flap > .heart {
+            transform: rotate(90deg);
+            transition-delay: 0.4s;
+        }
+
+        .envelope-wrapper .imageX {
+            max-width: 100%; /* Reducir el tamaño máximo de la imagen */
+            max-height: 90%; /* Reducir el tamaño máximo de la imagen */
+            display: none; /* Ocultar la imagen por defecto */
+        }
+
+        /* Estilos personalizados para cada imagen */
+        .image1 {
+            max-width: 100%;
+            max-height: 90%;
+        }
+
+        .image2 {
+            max-width: 100%;
+            max-height: 80%;
+        }
+
+        .image3 {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .image4 {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .envelope-wrapper img {
+          border: none; /* Elimina el borde alrededor de las imágenes */
+        }
+
+        /* Establece estilos de sombra para ambos dispositivos */
+        .shadow {
+            position: absolute;
+            width: 100%; /* Ancho de la sombra */
+            height: 25px; /* Altura de la sombra */
+            border-radius: 50%; /* Bordes redondeados */
+            background-color: rgba(0, 0, 0, 0.3); /* Color de la sombra */
+            top: 255px; /* Posición vertical de la sombra */
+            left: 0; /* Posición horizontal de la sombra */
+            animation: scale 2s linear infinite; /* Animación de escala */
+            z-index: -1; /* Sitúa la sombra detrás del sobre */
+        }
+
+        @keyframes scale {
+            0%, 100% {
+                transform: scaleX(1);
+            }
+            50% {
+                transform: scaleX(0.85);
+            }
+        }
+
+        /* Estilos para dispositivos móviles */
+        @media only screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+        
+            .envelopes-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        
+            .envelope-wrapper {
+                margin: 0 auto 65px auto; /* Ajusta los márgenes para centrar */
+                width: 85.2%;
+                position: relative; /* Agrega posición relativa */
+                margin-left: 15%; /* Puedes eliminar o ajustar este margen izquierdo */
+            }
+
+            /* Ajustes para la sombra en dispositivos móviles */
+            .shadow {
+                position: absolute;
+                width: 100%; /* Ancho de la sombra */
+                height: 25px; /* Altura de la sombra */
+                border-radius: 50%; /* Bordes redondeados */
+                background-color: rgba(0, 0, 0, 0.3); /* Color de la sombra */
+                top: 243px; /* Ajusta la posición vertical de la sombra */
+                left: 0; /* Posición horizontal de la sombra */
+                animation: scale 2s linear infinite; /* Animación de escala */
+                z-index: -1; /* Sitúa la sombra detrás del sobre */
+                margin-bottom: 20px; /* Ajusta el margen inferior de la sombra */
+            }
+        
+            /* Ajustes para los corazones */
+            .heart {
+                position: absolute;
+                top: 50%;
+                left: 50.2%;
+                width: 15px;
+                height: 15px;
+                background: var(--heart-color);
+                z-index: 4;
+                transition: transform 0.5s ease-in-out 1s;
+                box-shadow: 0 1px 6px var(--shadow-color);
+                cursor: pointer;
+            }
+        
+            .flap > .heart {
+                transform: rotate(90deg);
+                transition-delay: 0.4s;
+            }
+        
+            .title {
+                font-size: 30px;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+        
+            /* Agrega estos estilos para centrar el título */
+            .title {
+                position: static;
+                transform: none;
+                left: auto;
+                top: auto;
+                margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+            }
+        
+            /* Establece un tamaño máximo para la imagen del cuarto sobre */
+            .image4 {
+                max-width: 100%; /* Ajusta el ancho máximo */
+                max-height: 80%; /* Ajusta la altura máxima */
+            }
+
+            body {
+                overflow-x: hidden;
+            }
+
+            
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1 class="title">FELIZ CUMPLEAÑOS 💗</h1>
+        <div class="envelope-wrapper">
+            <div class="envelope">
+                <div class="letter">
+                    <div class="text">
+                        <strong></strong>
+                        <p>
+                        Espero que la hayas pasado súper bien y haya sido un lindo día para ti.
+                        </p>
+                    </div>
+                    <!-- Aquí está el video -->
+                    <video class="image1" controls onended="restartVideo('image1')">
+                        <source src="video1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="shadow"></div> <!-- Agrega la sombra aquí -->
+            </div>
+            <div class="heart"></div>
+        </div>
+        <!-- Segundo sobre -->
+        <div class="envelope-wrapper">
+            <div class="envelope">
+                <div class="letter">
+                    <div class="text">
+                        <strong></strong>
+                        <p>
+                        Estudia para que no pierdas materias de nuevo. Cuando no puedas algo en word me avisas :v
+                        </p>
+                    </div>
+                    <img src="image.jpeg" class="image2">
+                </div>
+                <div class="shadow"></div> <!-- Agrega la sombra aquí -->
+            </div>
+            <div class="heart"></div>
+        </div>
+        <!-- Tercer sobre -->
+        <div class="envelope-wrapper">
+            <div class="envelope">
+                <div class="letter">
+                    <div class="text">
+                        <strong></strong>
+                        <p>
+                        Otra foto con tu hija porque no sé qué escribir jsjhdsj.
+                        </p>
+                    </div>
+                    <img src="image3.jpeg" class="image3">
+                </div>
+                <div class="shadow"></div> <!-- Agrega la sombra aquí -->
+            </div>
+            <div class="heart"></div>
+        </div>
+
+        <!-- Cuarto sobre -->
+        <div class="envelope-wrapper">
+            <div class="envelope">
+                <div class="letter">
+                    <div class="text">
+                        <strong></strong>
+                        <p>
+                        Ojalá te haya gustado y perdón si está sencillo, ya no tuve mucho tiempo libre. Pero la intención es lo que cuenta.
+                        </p>
+                    </div>
+                    <img src="image4.jpeg" class="image4">
+                </div>
+                <div class="shadow"></div> <!-- Agrega la sombra aquí -->
+            </div>
+            <div class="heart"></div>
+        </div>
+    </div>
+    <script>
+        function restartVideo(videoClassName) {
+            const video = document.querySelector('.' + videoClassName);
+            video.currentTime = 0;
+            video.play();
+        }
+    
+        const envelopes = document.querySelectorAll('.envelope-wrapper');
+        let currentFlap = null; // Variable para almacenar el sobre actualmente abierto
+        envelopes.forEach(envelope => {
+            const video = envelope.querySelector('video');
+            const heart = envelope.querySelector('.heart');
+            envelope.addEventListener('click', () => {
+                if (currentFlap && currentFlap !== envelope) {
+                    // Si hay un sobre abierto que no es el mismo que el que se está abriendo ahora
+                    currentFlap.classList.remove('flap'); // Cierra el sobre actual
+                    currentFlap.querySelector('video').pause(); // Pausa el video del sobre actual
+                    currentFlap.querySelector('video').currentTime = 0; // Reinicia el video del sobre actual
+                }
+                envelope.classList.toggle('flap');
+                if (envelope.classList.contains('flap')) {
+                    video.currentTime = 0; // Reiniciar el video al abrir el sobre
+                    video.play();
+                    heart.style.display = 'block'; // Mostrar el corazón cuando se abre el sobre
+                    envelope.querySelector('img').style.display = 'block'; // Mostrar la imagen cuando se abre el sobre
+                    currentFlap = envelope; // Establece el sobre actualmente abierto
+                } else {
+                    video.pause();
+                    heart.style.display = 'block'; // Mostrar el corazón cuando se cierra el sobre
+                    envelope.querySelector('img').style.display = 'none'; // Ocultar la imagen cuando se cierra el sobre
+                    currentFlap = null; // No hay sobre abierto
+                }
+            });
+        });
+        // Script para desactivar la selección de texto en las imágenes
+        document.querySelectorAll('.envelope-wrapper').forEach(envelope => {
+            envelope.addEventListener('mousedown', function(event) {
+                event.preventDefault();
+            });
+        });
+    
+        // Script para desactivar la selección de texto en el mensaje "Feliz Cumpleaños"
+        document.querySelector('.title').addEventListener('mousedown', function (event) {
+            event.preventDefault();
+        });
+    </script>
+
+</body>
+</html>
